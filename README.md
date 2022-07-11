@@ -343,3 +343,16 @@ to do with Homebrew.
    ```Shell
    pip install ./tensorflow_text-*-*-*-os_platform.whl
    ```
+
+If building in Tensorflow's SIG docker images (platform independent)
+
+1.  Pull image from
+    [Tensorflow SIG docker builds](https://hub.docker.com/r/tensorflow/build/tags).
+1.  Run a container based on the image we pulled earlier and create shell.
+1.  Run the configuration script to pull Tensorflow's Bazel' configurations and
+    making ready for build: `./oss_scripts/configure.sh`
+1.  Build the pip package: \
+    `bazel build --config=release_cpu_linux
+    oss_scripts/pip_package:build_pip_package` \
+    `./bazel-bin/oss_scripts/pip_package/build_pip_package
+    /kokoro_artifacts_dir` `
